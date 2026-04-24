@@ -77,7 +77,7 @@ app.post('/api/query', async (req, res) => {
     const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
         prompt: userQuery,
         max_tokens: 150
-    }, { headers: { 'Authorization': `Bearer YOUR_OPENAI_API_KEY` }});
+    }, { headers: { 'Authorization': `Bearer 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` }});
     res.json(response.data);
 });
 
