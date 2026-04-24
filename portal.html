@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        header { background-color: #4CAF50; color: white; padding: 15px; text-align: center; }
+        section { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .dashboard { display: flex; justify-content: space-around; }
+        .box { width: 30%; padding: 10px; border: 1px solid #ddd; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Student Portal</h1>
+        <a href="#login">Login</a>
+    </header>
+    <section id="login">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </section>
+    <section class="dashboard">
+        <div class="box">
+            <h3>Results</h3>
+            <p>View your latest results here.</p>
+        </div>
+        <div class="box">
+            <h3>Fees Balance</h3>
+            <p>Your current balance is: $0.00</p>
+        </div>
+        <div class="box">
+            <h3>Announcements</h3>
+            <p>Check for the latest announcements from your institution.</p>
+        </div>
+    </section>
+    <section>
+        <h2>Performance Graphs</h2>
+        <div>
+            <canvas id="performanceGraph" width="400" height="200"></canvas>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        const ctx = document.getElementById('performanceGraph').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April'],
+                datasets: [{
+                    label: 'Performance',
+                    data: [65, 59, 80, 81],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
