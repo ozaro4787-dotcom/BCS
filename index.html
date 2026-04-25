@@ -3,107 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Admin Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our School</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#academics">Academics</a></li>
-            <li><a href="#sports">Sports</a></li>
-            <li><a href="#fees">Fees</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#login">Login</a></li>
-        </ul>
-    </nav>
-
-    <section id="login">
-        <h2>Login Page</h2>
-        <form>
+    <h1>Admin Dashboard</h1>
+    <div id="loginForm">
+        <h2>Login</h2>
+        <form id="login">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Login</button>
         </form>
-    </section>
+        <div id="loginMessage"></div>
+    </div>
 
-    <section id="admin">
+    <div id="adminDashboard" style="display:none;">
         <h2>Admin Dashboard</h2>
-        <form>
-            <h3>Edit Functionality</h3>
-            <label for="editContent">Edit Content:</label>
-            <textarea id="editContent" name="editContent"></textarea>
-            <button type="submit">Save Changes</button>
+        <h3>Manage Students</h3>
+        <form id="studentForm">
+            <input type="text" id="studentName" name="studentName" placeholder="Student Name" required>
+            <button type="submit">Add Student</button>
         </form>
-    </section>
-
-    <section id="fees">
-        <h2>School Fees</h2>
-        <p>The school fees are set to 750,000 UGX.</p>
-    </section>
-
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <img src="image1.jpg" alt="Image 1">
-            <img src="image2.jpg" alt="Image 2">
-            <img src="image3.jpg" alt="Image 3">
-        </div>
-    </section>
-
-    <section id="tabs">
-        <h2>Sections</h2>
-        <div class="tabs">
-            <button class="tablinks" onclick="openTab(event, 'academics')">Academics</button>
-            <button class="tablinks" onclick="openTab(event, 'sports')">Sports</button>
-            <button class="tablinks" onclick="openTab(event, 'fees')">Fees</button>
-            <button class="tablinks" onclick="openTab(event, 'achievements')">Achievements</button>
-        </div>
-
-        <div id="academics" class="tabcontent">
-            <h3>Academics</h3>
-            <p>Details about academics.</p>
-        </div>
-
-        <div id="sports" class="tabcontent">
-            <h3>Sports</h3>
-            <p>Details about sports.</p>
-        </div>
-
-        <div id="fees" class="tabcontent">
-            <h3>Fees</h3>
-            <p>Details about fees.</p>
-        </div>
-
-        <div id="achievements" class="tabcontent">
-            <h3>Achievements</h3>
-            <p>Details about achievements.</p>
-        </div>
-    </section>
+        <h3>Manage Events</h3>
+        <form id="eventForm">
+            <input type="text" id="eventName" name="eventName" placeholder="Event Name" required>
+            <button type="submit">Add Event</button>
+        </form>
+    </div>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
+        $(document).ready(function() {
+            $('#login').on('submit', function(e) {
+                e.preventDefault();
+                const username = $('#username').val();
+                const password = $('#password').val();
+                $.post('/api/login', { username, password })
+                .done(function(data) {
+                    localStorage.setItem('token', data.token);
+                    $('#loginForm').hide();
+                    $('#adminDashboard').show();
+                })
+                .fail(function() {
+                    $('#loginMessage').text('Login failed. Please try again.');
+                });
+            });
 
-    <footer>
-        <p>&copy; 2026 Our School</p>
-    </footer>
+            $('#studentForm').on('submit', function(e) {
+                e.preventDefault();
+                const studentName = $('#studentName').val();
+                // Add Student Logic
+            });
+
+            $('#eventForm').on('submit', function(e) {
+                e.preventDefault();
+                const eventName = $('#eventName').val();
+                // Add Event Logic
+            });
+        });
+    </script>
 </body>
 </html>
