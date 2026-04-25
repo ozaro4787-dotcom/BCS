@@ -1,0 +1,179 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Professional Color Scheme */
+:root {
+  --primary-color: #003366; /* Dark Blue */
+  --secondary-color: #ffcc00; /* Gold */
+  --accent-color: #e6e6e6; /* Light Grey */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--accent-color);
+  color: #333;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Navigation Bar Styling */
+.navbar {
+  background-color: var(--primary-color);
+  overflow: hidden;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"], input[type="email"], textarea {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input:valid {
+  border-color: green;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+/* Admin Dashboard Layout */
+.admin-sidebar {
+  width: 250px;
+  float: left;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.admin-sidebar ul {
+  list-style-type: none;
+}
+
+.admin-sidebar li {
+  padding: 10px;
+}
+
+.admin-sidebar li:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Student Portal Dashboard Styling */
+.student-dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Data Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+/* Card-Based Layout */
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  margin: 15px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Modal/Dialog Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Error and Success Message Styling */
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+/* Loading Spinners */
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
